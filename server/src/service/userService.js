@@ -4,8 +4,11 @@ import { generateToken } from '../utils/tokenUtils.js';
 
 
 export default {
-    register(userData) {
-        return User.create(userData)
+    async register(userData) {
+        const user =  await User.create(userData);
+        const token = generateToken(user);
+
+        return {user, token};
     },
 
     async login(email, password) {
@@ -21,12 +24,6 @@ export default {
 
         const token = generateToken(user);
 
-        const result = {
-            email,
-            authToken: token,
-            userId: user.id,
-        }
-
-        return result;
+        return {user, token};
     }
 }
