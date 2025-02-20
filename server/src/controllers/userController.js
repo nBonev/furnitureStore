@@ -29,4 +29,13 @@ userController.post('/login', async (req, res) => {
     });
 });
 
+userController.get('/logout', async (req, res) => {
+    const token = req.headers['x-authorization'];
+
+    await userService.invalidateToken(token);
+
+    res.json({});
+
+});
+
 export default userController;
