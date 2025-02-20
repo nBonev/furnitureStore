@@ -5,8 +5,10 @@ import { isAuth } from "../middlewares/authMiddleware.js";
 const furnitureController = Router();
 
 //Get all
-furnitureController.get('/', (req, res) => {
-    res.json([]);
+furnitureController.get('/', async (req, res) => {
+    const furnitures = await furnitureService.getAll();
+    
+    res.json(furnitures);
 });
 
 //Get one
