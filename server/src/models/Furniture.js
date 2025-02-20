@@ -22,7 +22,7 @@ const furnitureSchema = new Schema({
         type: Number,
         min: 0,
     },
-    imageUrl: {
+    img: {
         type: String,
         required: true,
     },
